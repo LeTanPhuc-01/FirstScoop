@@ -1,0 +1,29 @@
+# Environment variable files
+.env
+*.*env*/
+
+# OAuth Credentials
+client_secret.json
+MY_LITTLE_SECRET_JSON
+
+# Compiled Python files
+__pycache__/
+*.pyc
+
+# IDE configurations
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Virtual Environment
+venv/
+env/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code workspace settings
+*.code-workspace
