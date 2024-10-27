@@ -97,6 +97,8 @@ pyvenv.cfg
 # Rope project settings
 .ropeproject
 
+# macOS specific files
+.DS_Store
 # mkdocs documentation
 /site
 
