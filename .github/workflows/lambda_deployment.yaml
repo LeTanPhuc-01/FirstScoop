@@ -1,0 +1,34 @@
+name: DEPLOY LAMBDA FUNCTION
+on: 
+  push:
+    branches: [master]
+  workflow_dispatch:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # Required for OIDC
+      contents: read # Required to checkout the repository
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.9' 
+      - name: Install Python deps
+        run: pip3 install -r requirements.txt -t .
+      - name: Create deployment package (zip)
+        run: zip -r lambda_function.zip . -x ".git/*" ".github/*
+      
+      - name: Configure AWS Credentials with OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::160885290020:role/github-action-role
+          aws-region: us-east-2
+      - name: Deploy Lambda new function code
+        run: |
+          aws lambda update-function-code \
+          --function-name arn:aws:lambda:us-east-2:160885290020:function:sendDailyMenu \
+          --zip-file fileb://lambda_function.zip

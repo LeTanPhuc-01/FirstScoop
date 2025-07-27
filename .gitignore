@@ -113,11 +113,68 @@ dmypy.json
 # VS Code
 .vscode/
 
-# Binaries
+# Virtual Environment
 bin/
-# Project Files
+lib/
+lib64/
+include/
+share/
+
+# Lambda Function Deployment Packages
+*.zip
+daily_menu1_package/
+web_scraper_package/
+lambda-deployment.zip
+
+# Lambda Dependencies (installed during build)
+lambda/requests/
+lambda/bs4/
+lambda/boto3/
+lambda/botocore/
+lambda/urllib3/
+lambda/certifi/
+lambda/charset_normalizer/
+lambda/idna/
+lambda/soupsieve/
+lambda/*.dist-info/
+
+# AWS Credentials and Config
+erudite-canto-436504-k4-f16002794017.json
+*.json
+!package.json
+!tsconfig.json
+
+# Non-Lambda Function Files (Project-specific exclusions)
+web_scraper.py
+subscription.py
+hello.py
+mailgrid_sender.py
+email_sender.py
+web_scraper3.py
+requirements.txt
+# Main
+web_scraper.py
+# Static Assets (not needed for Lambda)
+QR.png
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+
+# Deployment and Build Files
+vercel.json
 daily_menu1_package
 web_scraper_package.zip
-subscription.py
-QR.png
-erudite-canto-436504-k4-f16002794017.json
+
+# Temporary Lambda Files
+/tmp/
+*.tmp
+
+# Lambda Function Logs
+*.log
+
+# Testing Files
+test_*.py
+*_test.py
+tests/
