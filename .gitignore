@@ -137,6 +137,7 @@ lambda/charset_normalizer/
 lambda/idna/
 lambda/soupsieve/
 lambda/*.dist-info/
+lambda/requirements.txt
 
 # AWS Credentials and Config
 erudite-canto-436504-k4-f16002794017.json
