@@ -151,7 +151,6 @@ hello.py
 mailgrid_sender.py
 email_sender.py
 web_scraper3.py
-requirements.txt
 # Main
 web_scraper.py
 # Static Assets (not needed for Lambda)
