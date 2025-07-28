@@ -18,9 +18,13 @@ jobs:
         with:
           python-version: '3.9' 
       - name: Install Python deps
-        run: pip3 install -r requirements.txt -t .
+        run: |
+          cd lambda
+          pip3 install -r requirements.txt -t .
       - name: Create deployment package (zip)
-        run: zip -r lambda_function.zip . -x ".git/*" ".github/*
+        run: |
+          cd lambda
+          zip -r ../lambda_function.zip . -x "*.pyc" "__pycache__/*"
       
       - name: Configure AWS Credentials with OIDC
         uses: aws-actions/configure-aws-credentials@v4
@@ -30,5 +34,5 @@ jobs:
       - name: Deploy Lambda new function code
         run: |
           aws lambda update-function-code \
-          --function-name arn:aws:lambda:us-east-2:160885290020:function:sendDailyMenu \
-          --zip-file fileb://lambda_function.zip
+            --function-name arn:aws:lambda:us-east-2:160885290020:function:sendDailyMenu \
+            --zip-file fileb://lambda_function.zip
