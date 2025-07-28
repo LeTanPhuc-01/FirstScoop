@@ -19,11 +19,11 @@ jobs:
           python-version: '3.9' 
       - name: Install Python deps
         run: |
-          cd lambda
+          cd lambda/
           pip3 install -r requirements.txt -t .
       - name: Create deployment package (zip)
         run: |
-          cd lambda
+          cd lambda/
           zip -r ../lambda_function.zip . -x "*.pyc" "__pycache__/*"
       
       - name: Configure AWS Credentials with OIDC
